@@ -1,3 +1,3 @@
-LIBRARY
+LIBRARY gta
 EXPORTS
-luaopen_gta
+	luaopen_gta

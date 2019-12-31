@@ -10,7 +10,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#pragma comment(lib, "lua51.lib")
+#pragma comment(lib, "lua-5.3.5.lib")
+
 
 
 // CMainWindow dialog
@@ -96,8 +97,7 @@ static int luaLog(lua_State* L) {
     const char* msg = lua_tostring(L, 1);
     mainWindow->log(L"[LUA]: %S", msg);
 
-    lua_pushnumber(L, 43);
-    return 1;
+    return 0;
 }
 
 void CMainWindow::LoadLuaScript(const wchar_t* file)
@@ -107,7 +107,7 @@ void CMainWindow::LoadLuaScript(const wchar_t* file)
     wchar_t wbuf[1024] = { 0 };
     log(L"LoadLuaScript %s", file);
 
-    int status, result, i;
+    int status, result;
     double sum;
     lua_State* L;
 
@@ -122,7 +122,7 @@ void CMainWindow::LoadLuaScript(const wchar_t* file)
     luaL_openlibs(L); /* Load Lua libraries */
 
     /* Load the file containing the script we are going to run */
-    sprintf(buf, "%ws", file);
+    sprintf(buf, "scripts/%ws", file);
     status = luaL_loadfile(L, buf);
     if (status) {
         /* If something went wrong, error message is at the top of */

@@ -5,10 +5,16 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFCLuaDll", "MFCLuaDll.vcxproj", "{3B7C7A82-DCF7-4BEA-8100-EBF7603A01AD}"
 	ProjectSection(ProjectDependencies) = postProject
+		{6E4E21DB-2F08-4ED5-8ACD-4FA4E086C5CB} = {6E4E21DB-2F08-4ED5-8ACD-4FA4E086C5CB}
 		{48522EEF-8AA8-4C1B-85B8-71B01889766C} = {48522EEF-8AA8-4C1B-85B8-71B01889766C}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaDLLGtaModule", "LuaGta2Module\Dll1.vcxproj", "{48522EEF-8AA8-4C1B-85B8-71B01889766C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gta", "LuaGta2Module\Dll1.vcxproj", "{48522EEF-8AA8-4C1B-85B8-71B01889766C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6E4E21DB-2F08-4ED5-8ACD-4FA4E086C5CB} = {6E4E21DB-2F08-4ED5-8ACD-4FA4E086C5CB}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua-5.3.5", "..\lua-5.3.5\lua-5.3.5.vcxproj", "{6E4E21DB-2F08-4ED5-8ACD-4FA4E086C5CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +40,14 @@ Global
 		{48522EEF-8AA8-4C1B-85B8-71B01889766C}.Release|x64.Build.0 = Release|x64
 		{48522EEF-8AA8-4C1B-85B8-71B01889766C}.Release|x86.ActiveCfg = Release|Win32
 		{48522EEF-8AA8-4C1B-85B8-71B01889766C}.Release|x86.Build.0 = Release|Win32
+		{6E4E21DB-2F08-4ED5-8ACD-4FA4E086C5CB}.Debug|x64.ActiveCfg = Debug|x64
+		{6E4E21DB-2F08-4ED5-8ACD-4FA4E086C5CB}.Debug|x64.Build.0 = Debug|x64
+		{6E4E21DB-2F08-4ED5-8ACD-4FA4E086C5CB}.Debug|x86.ActiveCfg = Debug|Win32
+		{6E4E21DB-2F08-4ED5-8ACD-4FA4E086C5CB}.Debug|x86.Build.0 = Debug|Win32
+		{6E4E21DB-2F08-4ED5-8ACD-4FA4E086C5CB}.Release|x64.ActiveCfg = Release|x64
+		{6E4E21DB-2F08-4ED5-8ACD-4FA4E086C5CB}.Release|x64.Build.0 = Release|x64
+		{6E4E21DB-2F08-4ED5-8ACD-4FA4E086C5CB}.Release|x86.ActiveCfg = Release|Win32
+		{6E4E21DB-2F08-4ED5-8ACD-4FA4E086C5CB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

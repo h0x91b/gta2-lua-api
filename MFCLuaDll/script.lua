@@ -1,11 +1,8 @@
--- script.lua
--- Receives a table, returns the sum of its components.
-
--- local gta = require "LuaDLLGtaModule"
--- loadmodule "LuaDLLGtaModule"
-
-local gta = require "gta"
-
 log("Hello world")
+local gta = require "scripts/gta"
 
-return gta.hello()
+log("gta is loaded")
+log("foo " .. gta.foo)
+log(gta.hello())
+
+return 42
