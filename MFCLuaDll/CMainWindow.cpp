@@ -117,6 +117,9 @@ void CMainWindow::LoadLuaScript(const wchar_t* file)
      */
     L = luaL_newstate();
 
+    GetCurrentDirectory(1024, wbuf);
+    log(L"Working dir: %s", wbuf);
+
     lua_register(L, "log", luaLog);
 
     luaL_openlibs(L); /* Load Lua libraries */
