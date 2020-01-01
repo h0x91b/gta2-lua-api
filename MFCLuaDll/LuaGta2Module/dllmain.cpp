@@ -44,10 +44,10 @@ bool IsBadWritePtr(void* p)
 // dest, src
 static int gta_write_memory(lua_State* L) {
     void *src, *dest;
-    size_t size, size2;
+    size_t size;
 
     int argc = lua_gettop(L);
-    if (!argc == 3) {
+    if (argc != 2) {
         lua_pushliteral(L, "must be 2 arguments");
         lua_error(L);
         return 0;
@@ -86,7 +86,7 @@ static int gta_read_memory(lua_State* L) {
     size_t size;
 
     int argc = lua_gettop(L);
-    if (!argc == 2) {
+    if (argc != 2) {
         lua_pushliteral(L, "must be 2 arguments");
         lua_error(L);
         return 0;

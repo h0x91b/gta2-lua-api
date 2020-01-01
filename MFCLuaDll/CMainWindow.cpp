@@ -125,7 +125,7 @@ void CMainWindow::LoadLuaScript(const wchar_t* file)
     luaL_openlibs(L); /* Load Lua libraries */
 
     /* Load the file containing the script we are going to run */
-    sprintf(buf, "scripts/%ws", file);
+    sprintf(buf, "scripts\\%ws", file);
     status = luaL_loadfile(L, buf);
     if (status) {
         /* If something went wrong, error message is at the top of */
@@ -144,7 +144,7 @@ void CMainWindow::LoadLuaScript(const wchar_t* file)
     /* Get the returned value at the top of the stack (index -1) */
     sum = lua_tonumber(L, -1);
 
-    log(L"Script returned: %.0f\n", sum);
+    log(L"Script returned: %i\n", sum);
 
     lua_pop(L, 1);  /* Take the returned value out of the stack */
     lua_close(L);   /* Cya, Lua */

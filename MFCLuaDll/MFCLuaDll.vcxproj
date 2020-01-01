@@ -218,6 +218,11 @@ copy $(MSBuildProjectDirectory)\script.lua Y:\GTA2-next-live\script.lua
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <CopyFileToFolders Include="api.lua">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders);Y:\GTA2-next-live\</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir);Y:\GTA2-next-live\</DestinationFolders>
+    </CopyFileToFolders>
     <None Include="MFCLuaDll.def" />
     <None Include="res\MFCLuaDll.rc2" />
     <CopyFileToFolders Include="script.lua">
