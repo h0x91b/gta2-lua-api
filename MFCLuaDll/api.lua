@@ -24,12 +24,11 @@ typedef struct {
     int field_0x2c;
     void * currentSlot;
 } Game;
-
 ]]
 
 local pGame = ffi.cast( "Game**", 0x005eb4fc )
 
-function api.getGameStatus()
+function api.GetGameStatus()
 	log(tostring(pGame))
 	log(tostring(pGame[0]))
 	if pGame[0] == nil then
@@ -41,7 +40,7 @@ function api.getGameStatus()
 	end
 end
 
-function api.setGameStatus( status )
+function api.SetGameStatus( status )
 	if status ~= 1 and status ~= 2 then
 		return
 	end
@@ -50,22 +49,15 @@ function api.setGameStatus( status )
 	end
 end
 
-
 function api.GetNextPedId()
-	local r, mem = gta.read_memory(0x00591e84, 4)
-	if r then
-		return string.unpack("L", mem)
-	end
-	return -1
+	local p = ffi.cast("int*", 0x00591e84)
+	return p[0]
 end
 
 function api.IncrByNextPedId( incr )
-	local pedId = api.GetNextPedId();
-	if pedId ~= -1 then
-		pedId = pedId + incr
-		gta.write_memory(0x00591e84, string.pack("L", pedId))
-	end
-	return api.GetNextPedId();
+	local p = ffi.cast("int*", 0x00591e84)
+	p[0] = p[0] + incr
+	return p[0];
 end
 
 return api

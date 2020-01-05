@@ -11,6 +11,10 @@ Lua API for controlling gta2.
 
 Then you can run gta, you should see new window with `Load script` button.
 
+## Compilation
+
+TBD
+
 ## API
 
 * gta.dll - is low level lua module, should be located in root of GTA installation.
@@ -29,27 +33,23 @@ Return `PedId` of next created ped
 
 Increment once next `PedId` by `incr`
 
-### gta.read_memory(src, size)
+### api.GetGameStatus()
 
-Reads from GTA2 memory
+Returns `Code`, `TextStatus`
 
-* src - pointer to memory
-* size - size of memory
+Example:
 
-returns:
+```lua
+local code, txt = api.GetGameStatus()
+log("Game status: code: " .. tostring(code) .. " text: " .. txt)
+```` 
 
-* success - boolean
-* memory - binary string, use string.pack/string.unpack to deal with it, in case of success false, there will be an error string
+### api.SetGameStatus(status)
 
-### gta.write_memory(dest, src)
+Set game status to `status`, `status` can be `api.GAME_PAUSED` eg. 2 and `api.GAME_RUN` eg. 1
 
-Writes into GTA2 memory
+Example:
 
-* dest - pointer to memory
-* src - binary string, use string.pack to make it.
-
-returns:
-
-* success - boolean
-* memory - modified memory, in case of success false, there will be an error string
-
+```lua
+api.SetGameStatus(api.GAME_PAUSED)
+```` 
