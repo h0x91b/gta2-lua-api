@@ -1,4 +1,7 @@
-local api = {}
+local api = {
+	GAME_PAUSED=2,
+    GAME_RUN=1,
+}
 local gta = require("gta")
 local ffi = require("ffi")
 
@@ -35,6 +38,15 @@ function api.getGameStatus()
 		return 1, "GAME_RUN"
 	else
 		return 2, "GAME_PAUSED"
+	end
+end
+
+function api.setGameStatus( status )
+	if status ~= 1 and status ~= 2 then
+		return
+	end
+	if api.getGameStatus() ~= 0 then
+		pGame[0].gameStatus = status
 	end
 end
 
