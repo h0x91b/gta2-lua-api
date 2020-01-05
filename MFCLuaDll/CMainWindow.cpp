@@ -10,9 +10,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#pragma comment(lib, "lua.lib")
-
-
 
 // CMainWindow dialog
 

@@ -2,21 +2,15 @@
 #include "pch.h"
 #define LUA_LIB
 
-extern "C" {
-    #include <lua.h>
-    #include <lualib.h>
-    #include <lauxlib.h>
-}
+#include "lua.hpp"
 
-#pragma comment(lib, "lua.lib")
-
-extern "C" int __cdecl HelloFFI(int a, int b, int c, int d) {
+extern "C" int __cdecl HelloFFI(int a, int b, int c) {
     OutputDebugStringW(L"HelloFFI");
     wchar_t buf[1024];
-    __asm int 3;
-    wsprintf(buf, L"HelloFFI(%i, %i, %i, %i)", a, b, c, d);
+    // __asm int 3;
+    wsprintf(buf, L"HelloFFI(%i, %i, %i, %i)", a, b, c);
     OutputDebugStringW(buf);
-    return a + b + c + d;
+    return a + b + c;
 }
 
 bool IsBadReadPtr(void* p)
@@ -61,7 +55,7 @@ static int gta_write_memory(lua_State* L) {
         return 0;
     }
 
-    if (!lua_isinteger(L, 1)) {
+    if (!lua_isnumber(L, 1)) {
         lua_pushliteral(L, "1st argument must be an integer (dest)");
         lua_error(L);
         return 0;
@@ -100,13 +94,13 @@ static int gta_read_memory(lua_State* L) {
         return 0;
     }
 
-    if (!lua_isinteger(L, 1)) {
+    if (!lua_isnumber(L, 1)) {
         lua_pushliteral(L, "1st argument must be an integer");
         lua_error(L);
         return 0;
     }
 
-    if (!lua_isinteger(L, 2)) {
+    if (!lua_isnumber(L, 2)) {
         lua_pushliteral(L, "2st argument must be an integer");
         lua_error(L);
         return 0;
@@ -141,7 +135,8 @@ static const luaL_Reg gtalib[] = {
 };
 
 __declspec(dllexport) int luaopen_gta(lua_State* L) {
-    luaL_newlib(L, gtalib);
+    //luaL_newlib(L, gtalib);
+    luaL_register(L, "gta", gtalib);
     return 1;
 }
 
