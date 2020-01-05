@@ -8,8 +8,16 @@ extern "C" {
     #include <lauxlib.h>
 }
 
-#pragma comment(lib, "lua-5.3.5.lib")
+#pragma comment(lib, "lua.lib")
 
+extern "C" int __cdecl HelloFFI(int a, int b, int c, int d) {
+    OutputDebugStringW(L"HelloFFI");
+    wchar_t buf[1024];
+    __asm int 3;
+    wsprintf(buf, L"HelloFFI(%i, %i, %i, %i)", a, b, c, d);
+    OutputDebugStringW(buf);
+    return a + b + c + d;
+}
 
 bool IsBadReadPtr(void* p)
 {
@@ -136,18 +144,6 @@ __declspec(dllexport) int luaopen_gta(lua_State* L) {
     luaL_newlib(L, gtalib);
     return 1;
 }
-
-/*
-LUALIB_API int luaopen_gta(lua_State* L) {
-    luaL_newlibtable(L, gtalib);
-    lua_newtable(L);
-    lua_pushnumber(L, 42);
-    lua_setfield(L, -2, "foo");
-    luaL_setfuncs(L, gtalib, 1);
-
-    return 1;
-}
-*/
 
 BOOL APIENTRY DllMain( HMODULE hModule,
                        DWORD  ul_reason_for_call,

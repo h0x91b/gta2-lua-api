@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#pragma comment(lib, "lua-5.3.5.lib")
+#pragma comment(lib, "lua.lib")
 
 
 
@@ -87,6 +87,7 @@ void CMainWindow::log(const wchar_t* format, ...)
 	str.AppendFormatV(format, args);
 	str.AppendFormat(L"\r\n");
 	m_log.SetWindowTextW(str);
+    OutputDebugStringW(str);
 	va_end(args);
 }
 

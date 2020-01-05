@@ -1,3 +1,4 @@
 LIBRARY gta
 EXPORTS
-	luaopen_gta
+	luaopen_gta			@1
+	HelloFFI			@2
