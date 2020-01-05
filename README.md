@@ -5,7 +5,7 @@ Lua API for controlling gta2.
 ## Installation
 
 * Download release or compile this project by yourself using Visual Studio 2019.
-* Copy `dinput8.dll`, `gta.dll`, `api.lua` and `lua-5.3.5.dll` from `MFCLuaDll/Release/` folder into GTA 11.44 installation folder.
+* Copy `dinput8.dll`, `gta.dll`, `api.lua` and `lua51.dll` from `MFCLuaDll/Release/` folder into GTA 11.44 installation folder.
 * Make new directory `scripts` in GTA directory.
 * Copy `MFCLuaDll.asi` and `script.lua` in `GTA/scripts/` folder
 
