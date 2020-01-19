@@ -97,13 +97,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\lua-jit\includes\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\lua-jit\includes\;$(SolutionDir)..\Detours\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <ModuleDefinitionFile>.\MFCLuaDll.def</ModuleDefinitionFile>
       <AdditionalLibraryDirectories>$(SolutionDir)..\lua-jit\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>lua51.lib</AdditionalDependencies>
+      <AdditionalDependencies>lua51.lib;detours.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -166,7 +166,7 @@ copy $(MSBuildProjectDirectory)\script.lua Y:\GTA2-next-live\script.lua
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\lua-jit\includes\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\lua-jit\includes\;$(SolutionDir)..\Detours\src\;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -174,7 +174,7 @@ copy $(MSBuildProjectDirectory)\script.lua Y:\GTA2-next-live\script.lua
       <OptimizeReferences>true</OptimizeReferences>
       <ModuleDefinitionFile>.\MFCLuaDll.def</ModuleDefinitionFile>
       <AdditionalLibraryDirectories>$(SolutionDir)..\lua-jit\;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>lua51.lib</AdditionalDependencies>
+      <AdditionalDependencies>lua51.lib;detours.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>

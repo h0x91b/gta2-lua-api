@@ -12,6 +12,43 @@
 
 #include "reversed/ped.h"
 
+#include <detours.h>
+
+static LONG dwSlept = 0;
+static VOID(WINAPI* TrueSleep)(DWORD dwMilliseconds) = Sleep;
+
+int __stdcall gbh_BeginScene();
+decltype(&gbh_BeginScene) p_gbh_BeginScene;
+
+template<class T>
+inline void GetFunc(HINSTANCE hInstance, T& result, const char* name)
+{
+    result = reinterpret_cast<T>(GetProcAddress(hInstance, name));
+}
+
+int hook_gbh_BeginScene() {
+    static DWORD lastTick = 0;
+
+    DWORD now = GetTickCount();
+
+    DWORD timeElapsed = now - lastTick;
+    float dt = (float)timeElapsed / 1000.0;
+    lastTick = now;
+    //call lua
+    
+    return p_gbh_BeginScene();
+}
+
+VOID WINAPI TimedSleep(DWORD dwMilliseconds)
+{
+    // Save the before and after times around calling the Sleep API.
+    DWORD dwBeg = GetTickCount();
+    TrueSleep(dwMilliseconds);
+    DWORD dwEnd = GetTickCount();
+
+    InterlockedExchangeAdd(&dwSlept, dwEnd - dwBeg);
+}
+
 // CMainWindow dialog
 
 IMPLEMENT_DYNAMIC(CMainWindow, CDialogEx)
@@ -20,6 +57,23 @@ CMainWindow::CMainWindow(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_DIALOG1, pParent)
 {
     m_gtaWindow = 0;
+
+    if (DetourIsHelperProcess()) {
+        return;
+    }
+
+    HMODULE d3ddll = LoadLibrary(L"d3ddll.dll");
+
+    GetFunc(d3ddll, p_gbh_BeginScene, "gbh_BeginScene");
+
+    DetourRestoreAfterWith();
+
+    DetourTransactionBegin();
+    DetourUpdateThread(GetCurrentThread());
+    DetourAttach(&(PVOID&)TrueSleep, TimedSleep);
+    DetourAttach(&(PVOID&)p_gbh_BeginScene, hook_gbh_BeginScene);
+    //DetourAttach(&(PVOID&)gbh_BeginScene, hook_gbh_BeginScene);
+    DetourTransactionCommit();
 }
 
 CMainWindow::~CMainWindow()
