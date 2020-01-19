@@ -44,7 +44,7 @@ function api.SetGameStatus( status )
 	if status ~= 1 and status ~= 2 then
 		return
 	end
-	if api.getGameStatus() ~= 0 then
+	if api.GetGameStatus() ~= 0 then
 		pGame[0].gameStatus = status
 	end
 end
