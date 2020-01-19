@@ -1,0 +1,1 @@
+Please copy or install gta2 into this directory (For simplify debug\compile)

@@ -8,7 +8,7 @@ extern "C" int __cdecl HelloFFI(int a, int b, int c) {
     OutputDebugStringW(L"HelloFFI");
     wchar_t buf[1024];
     // __asm int 3;
-    wsprintf(buf, L"HelloFFI(%i, %i, %i, %i)", a, b, c);
+    wsprintf(buf, L"HelloFFI(%i, %i, %i)", a, b, c);
     OutputDebugStringW(buf);
     return a + b + c;
 }

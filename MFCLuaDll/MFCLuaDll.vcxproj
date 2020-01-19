@@ -97,12 +97,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\lua-jit\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Lua\LuaJIT-2.0.5\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <ModuleDefinitionFile>.\MFCLuaDll.def</ModuleDefinitionFile>
-      <AdditionalLibraryDirectories>C:\lua-jit\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Lua\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>lua51.lib</AdditionalDependencies>
     </Link>
     <Midl>
@@ -115,10 +115,13 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>copy $(TargetPath) Y:\GTA2-next-live\scripts\$(AssemblyName).asi</Command>
+      <Command>copy $(TargetPath)  $(SolutionDir)..\gta2\scripts\$(AssemblyName).asi
+copy $(ProjectDir)api.lua  $(SolutionDir)..\gta2\api.lua
+copy $(ProjectDir)script.lua  $(SolutionDir)..\gta2\scripts\script.lua</Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>del Y:\GTA2-next-live\scripts\$(AssemblyName).asi</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
     <CustomBuildStep>
       <Command>copy $(TargetPath) Y:\GTA2-next-live\scripts\$(AssemblyName).asi
@@ -136,10 +139,13 @@ copy $(MSBuildProjectDirectory)\script.lua Y:\GTA2-next-live\script.lua
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_WINDOWS;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>C:\Lua\LuaJIT-2.0.5\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <ModuleDefinitionFile>.\MFCLuaDll.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>C:\Lua\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua51.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -160,14 +166,14 @@ copy $(MSBuildProjectDirectory)\script.lua Y:\GTA2-next-live\script.lua
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\lua-jit\includes;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Lua\LuaJIT-2.0.5\src;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <ModuleDefinitionFile>.\MFCLuaDll.def</ModuleDefinitionFile>
-      <AdditionalLibraryDirectories>C:\lua-jit\;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Lua\;</AdditionalLibraryDirectories>
       <AdditionalDependencies>lua51.lib</AdditionalDependencies>
     </Link>
     <Midl>
@@ -180,8 +186,14 @@ copy $(MSBuildProjectDirectory)\script.lua Y:\GTA2-next-live\script.lua
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>copy $(TargetPath) Y:\GTA2-next-live\scripts\$(AssemblyName).asi</Command>
+      <Command>copy $(TargetPath)  $(SolutionDir)..\gta2\scripts\$(AssemblyName).asi
+copy $(ProjectDir)api.lua  $(SolutionDir)..\gta2\api.lua
+copy $(ProjectDir)script.lua  $(SolutionDir)..\gta2\scripts\script.lua</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -192,12 +204,15 @@ copy $(MSBuildProjectDirectory)\script.lua Y:\GTA2-next-live\script.lua
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>C:\Lua\LuaJIT-2.0.5\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <ModuleDefinitionFile>.\MFCLuaDll.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>C:\Lua\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua51.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>

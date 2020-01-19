@@ -2,18 +2,41 @@
 
 Lua API for controlling gta2.
 
+## Compilation
+
+### LuaJIT
+
+You will need visual studio 2019.
+
+* Download [LuaJIT](http://luajit.org/download.html)
+* Make directory `C:\Lua\`
+* Unpack into `C:\Lua\LuaJIT-2.0.5\` lua source code
+* Open `Visual Studio 2019 Developer Command Prompt`
+* Compile source:
+
+```
+cd C:\Lua\LuaJIT-2.0.5\src
+
+msvcbuild
+```
+
+Copy from `C:\Lua\LuaJIT-2.0.5\src` into `C:\Lua` following files:
+
+* luajit.exe
+* lua51.dll
+* lua51.lib
+
+### Compiling this project
+
+Clone or download this project somewhere, then open in `Visual Studio 2019` `gta2-lua-api\MFCLuaDll\MFCLuaDll.sln`
+If you compiled and placed in right directories LuaJIT, then just compile, everything should work fine.
+
 ## Installation
 
 * Download release or compile this project by yourself using Visual Studio 2019.
-* Copy `dinput8.dll`, `gta.dll`, `api.lua` and `lua51.dll` from `MFCLuaDll/Release/` folder into GTA 11.44 installation folder.
-* Make new directory `scripts` in GTA directory.
-* Copy `MFCLuaDll.asi` and `script.lua` in `GTA/scripts/` folder
+* Copy all files from this project `gta2` directory into GTA 2 11.44 installation folder.
 
 Then you can run gta, you should see new window with `Load script` button.
-
-## Compilation
-
-TBD
 
 ## API
 

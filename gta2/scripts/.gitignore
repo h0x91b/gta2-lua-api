@@ -1,0 +1,4 @@
+*
+!.gitignore
+!MFCLuaDll.asi
+!script.lua

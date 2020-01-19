@@ -1,0 +1,8 @@
+*
+!.gitignore
+!README.md
+!dinput8.dll
+!gta.dll
+!api.lua
+!lua51.dll
+!scripts
