@@ -14,6 +14,8 @@
 
 #include <detours.h>
 
+lua_State* L = 0;
+
 static LONG dwSlept = 0;
 static VOID(WINAPI* TrueSleep)(DWORD dwMilliseconds) = Sleep;
 
@@ -35,6 +37,13 @@ int hook_gbh_BeginScene() {
     float dt = (float)timeElapsed / 1000.0;
     lastTick = now;
     //call lua
+    if (L) {
+        lua_getglobal(L, "gbh_BeginScene");
+        lua_pushnumber(L, dt);
+        lua_pcall(L, 1, 1, 0);
+        bool rez = lua_toboolean(L, -1);
+        lua_pop(L, 1);
+    }
     
     return p_gbh_BeginScene();
 }
@@ -163,7 +172,7 @@ void CMainWindow::LoadLuaScript(const wchar_t* file)
 
     int status, result;
     double sum;
-    lua_State* L;
+    //lua_State* L;
 
     /*
      * All Lua contexts are held in this structure. We work with it almost
@@ -201,7 +210,7 @@ void CMainWindow::LoadLuaScript(const wchar_t* file)
     log(L"Script returned: %i\n", sum);
 
     lua_pop(L, 1);  /* Take the returned value out of the stack */
-    lua_close(L);   /* Cya, Lua */
+    //lua_close(L);   /* Cya, Lua */
 }
 
 

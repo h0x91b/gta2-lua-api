@@ -3278,4 +3278,19 @@ function api.GetPedById( id )
 	return ped
 end
 
+local user_gbh_BeginScene = nil
+
+function api.HookBeginScene( fn )
+	user_gbh_BeginScene = fn
+end
+
+
+function gbh_BeginScene( dt )
+	if(user_gbh_BeginScene) then
+        user_gbh_BeginScene(dt)
+        return true
+    end
+    return false
+end
+
 return api

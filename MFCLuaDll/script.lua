@@ -21,6 +21,12 @@ if ped ~= 0 then
 	ped.health = 20
 end
 
+function BeginScene( dt )
+	log("BeginScene " .. tostring(dt))
+end
+
+api.HookBeginScene(BeginScene)
+
 log("finish")
 
 return 42
