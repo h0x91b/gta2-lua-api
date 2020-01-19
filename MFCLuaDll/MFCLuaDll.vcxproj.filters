@@ -32,6 +32,7 @@
     <None Include="res\MFCLuaDll.rc2">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\README.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">

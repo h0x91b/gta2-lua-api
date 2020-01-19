@@ -14,7 +14,11 @@ log("Pause the game")
 api.SetGameStatus(api.GAME_PAUSED)
 
 log("api.GetPedById(1)")
-log(tostring(api.GetPedById(1)))
+local ped = api.GetPedById(1)
+log("Player ped: " .. tostring(ped))
+if ped ~= 0 then
+	log("Player health: " .. tostring(ped.health))
+end
 
 log("finish")
 

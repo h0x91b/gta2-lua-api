@@ -240,6 +240,7 @@ copy $(ProjectDir)script.lua  $(SolutionDir)..\gta2\scripts\script.lua</Command>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(DestinationFolders);Y:\GTA2-next-live\</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir);Y:\GTA2-next-live\</DestinationFolders>
     </CopyFileToFolders>
+    <None Include="..\README.md" />
     <None Include="MFCLuaDll.def" />
     <None Include="res\MFCLuaDll.rc2" />
     <CopyFileToFolders Include="script.lua">
