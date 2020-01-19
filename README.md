@@ -76,3 +76,7 @@ Example:
 ```lua
 api.SetGameStatus(api.GAME_PAUSED)
 ```` 
+
+### api.GetPedById( id )
+
+Return pointer to `Ped` with requested id
