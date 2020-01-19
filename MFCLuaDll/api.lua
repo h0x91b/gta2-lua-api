@@ -8,6 +8,8 @@ local ffi = require("ffi")
 ffi.cdef[[
 int __cdecl HelloFFI(int, int, int);
 
+typedef void* (__stdcall GetPedById)(int);
+
 typedef enum GAME_STATUS {
     GAME_PAUSED=2,
     GAME_RUN=1
@@ -24,9 +26,13 @@ typedef struct {
     int field_0x2c;
     void * currentSlot;
 } Game;
+
+
 ]]
 
 local pGame = ffi.cast( "Game**", 0x005eb4fc )
+local pGetPedById = ffi.cast("GetPedById*", 0x0043ae10)
+
 
 function api.GetGameStatus()
 	log(tostring(pGame))
@@ -58,6 +64,12 @@ function api.IncrByNextPedId( incr )
 	local p = ffi.cast("int*", 0x00591e84)
 	p[0] = p[0] + incr
 	return p[0];
+end
+
+function api.GetPedById( id )
+	log("api.GetPedById( " .. tostring(id) .. ") " .. tostring(pGetPedById))
+	local ped = pGetPedById(id)
+	return ped
 end
 
 return api

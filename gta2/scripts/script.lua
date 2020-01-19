@@ -13,6 +13,9 @@ log("Game status: code: " .. tostring(res) .. " text: " .. txt)
 log("Pause the game")
 api.SetGameStatus(api.GAME_PAUSED)
 
+log("api.GetPedById(1)")
+log(tostring(api.GetPedById(1)))
+
 log("finish")
 
 return 42
