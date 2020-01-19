@@ -18,7 +18,7 @@ IMPLEMENT_DYNAMIC(CMainWindow, CDialogEx)
 CMainWindow::CMainWindow(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_DIALOG1, pParent)
 {
-
+    m_gtaWindow = 0;
 }
 
 CMainWindow::~CMainWindow()
@@ -38,6 +38,7 @@ BEGIN_MESSAGE_MAP(CMainWindow, CDialogEx)
 	ON_WM_CREATE()
 	ON_WM_SHOWWINDOW()
     ON_BN_CLICKED(IDC_BUTTON1, &CMainWindow::OnBnClickedButton1)
+    ON_WM_PAINT()
 END_MESSAGE_MAP()
 
 
@@ -152,4 +153,28 @@ void CMainWindow::LoadLuaScript(const wchar_t* file)
 void CMainWindow::OnBnClickedButton1()
 {
     LoadLuaScript(L"script.lua");
+}
+
+
+void CMainWindow::OnPaint()
+{
+    CPaintDC dc(this); // device context for painting
+    
+    if (m_gtaWindow == NULL) {
+        m_gtaWindow = FindWindowA("WinMain", "GTA2");
+    }
+
+    if (m_gtaWindow) {
+        CRect rect, rect2;
+
+        GetWindowRect(&rect);
+        ::GetWindowRect(m_gtaWindow, &rect2);
+
+        int x = GetSystemMetrics(SM_CXSCREEN) - rect2.Width();
+
+        ::MoveWindow(m_gtaWindow, x, 0, rect2.Width(), rect2.Height(), true);
+        MoveWindow(0, 0, rect.Width(), rect.Height(), true);
+
+        InvalidateRect(rect);
+    }
 }

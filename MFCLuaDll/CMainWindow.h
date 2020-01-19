@@ -29,4 +29,6 @@ public:
 	void log(const wchar_t* format, ...);
 	void LoadLuaScript(const wchar_t* file);
 	afx_msg void OnBnClickedButton1();
+	afx_msg void OnPaint();
+	HWND m_gtaWindow;
 };
