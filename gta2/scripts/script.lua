@@ -18,6 +18,7 @@ local ped = api.GetPedById(1)
 log("Player ped: " .. tostring(ped))
 if ped ~= 0 then
 	log("Player health: " .. tostring(ped.health))
+	ped.health = 20
 end
 
 log("finish")

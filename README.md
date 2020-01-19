@@ -84,12 +84,14 @@ Return pointer to `Ped` with requested id
 Example:
 
 ```lua
+-- get player ped and show his current health, then set health to 20
 local ped = api.GetPedById(1)
 if ped ~= 0 then
 	log("Player health: " .. tostring(ped.health))
+	ped.health = 20
 end
 ```` 
 
 ### Ped struct
 
-All definitions are in [Ped.h](MFCLuaDll/reversed/ped.h)
+All definitions are in [Ped.h](MFCLuaDll/reversed/ped.h) and in [api.lua](gta2/api.lua)
