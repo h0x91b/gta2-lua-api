@@ -3270,7 +3270,6 @@ function api.IncrByNextPedId( incr )
 end
 
 function api.GetPedById( id )
-	log("api.GetPedById( " .. tostring(id) .. ") " .. tostring(pGetPedById))
     if pGame[0] == nil then
 	    return 0, "GAME_NOT_STARTED"
     end

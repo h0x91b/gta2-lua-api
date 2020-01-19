@@ -67,7 +67,7 @@ Example:
 ```lua
 local code, txt = api.GetGameStatus()
 log("Game status: code: " .. tostring(code) .. " text: " .. txt)
-```` 
+```
 
 ### api.SetGameStatus(status)
 
@@ -77,7 +77,7 @@ Example:
 
 ```lua
 api.SetGameStatus(api.GAME_PAUSED)
-```` 
+```
 
 ### api.GetPedById( id )
 
@@ -92,7 +92,29 @@ if ped ~= 0 then
 	log("Player health: " .. tostring(ped.health))
 	ped.health = 20
 end
-```` 
+```
+
+### api.HookBeginScene( fn )
+
+Set hook to your function which will be called before every `BeginScene` e.g. before drawing frame
+
+To callback `dt` will be passed as first argument, `dt` is delta time in seconds from previous drawFrame, you can use it to make physics.
+
+Example:
+
+```lua
+-- Set health to 100% on each frame draw, so cops will can not kill you
+-- dt - is time in seconds from previous draw
+function BeginScene( dt )
+	-- log("BeginScene " .. tostring(dt))
+	local ped = api.GetPedById(1)
+	if ped ~= 0 then
+		ped.health = 100
+	end
+end
+
+api.HookBeginScene(BeginScene)
+```
 
 ### Ped struct
 

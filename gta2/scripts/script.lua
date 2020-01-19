@@ -22,7 +22,11 @@ if ped ~= 0 then
 end
 
 function BeginScene( dt )
-	log("BeginScene " .. tostring(dt))
+	-- log("BeginScene " .. tostring(dt))
+	local ped = api.GetPedById(1)
+	if ped ~= 0 then
+		ped.health = 100
+	end
 end
 
 api.HookBeginScene(BeginScene)
